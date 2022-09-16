@@ -17,12 +17,11 @@ model {
     normal_lccdf(0 | 0, 1);
   
 
-  target += lognormal_lpdf(rt | alpha +
-                        c_cond * beta, sigma);
+  target += lognormal_lpdf(rt | alpha + c_cond * beta, sigma);
 }
 generated quantities {
  array[N] real log_lik;
  for (n in 1:N){
-    log_lik[n] = lognormal_lpdf(rt[n] | alpha  + c_cond * beta, sigma);
+    log_lik[n] = lognormal_lpdf(rt[n] | alpha  + c_cond[n] * beta, sigma);
   }
 }

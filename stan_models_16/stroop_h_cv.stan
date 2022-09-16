@@ -42,6 +42,6 @@ generated quantities {
 
   for (n in 1:N){
     log_lik[n] = lognormal_lpdf(rt[n] | alpha + u[subj[n], 1] +
-                        c_cond * (beta + u[subj[n], 2]), sigma);
+                        c_cond[n] * (beta + u[subj[n], 2]), sigma);
   }
 }
